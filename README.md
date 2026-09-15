@@ -12,7 +12,7 @@ building, what to do, what it looks like when it worked, and where to look when
 it did not. `guide/Participant-Guide.pdf` is the same thing on paper.
 
 **The same steps run on the build site** at
-<https://anthropicpartnerbasecamp.bts.com/>, which your pod opens together in
+[https://anthropicpartnerbasecamp.bts.com/](https://anthropicpartnerbasecamp.bts.com/), which your pod opens together in
 the room. It opens on the welcome too, and the three Start pages sit under the
 first tab. The site adds the build clock at the top of the page and the box
 where you paste the evidence code a gate prints. Nothing uploads either way.
@@ -84,15 +84,15 @@ re-running `bench.py --label before` against the current agent.
 
 ## The scripts
 
-| Script | What it does |
-|---|---|
-| `setup.py` | Checks this machine. `--fix` builds the venv and installs. Run it until READY. |
-| `run.py <PNR> --trace` | Runs the agent on one ticket and shows every turn on the wire. `--all` runs the five shapes and writes the totals. |
-| `verify.py <step>` | A gate: `1.2`, `1.3`, `1.4`, `2.1`, `2.2`, `3.1`, `4.1`. Run it with no step and it prints the status board. |
-| `pod_sync.py` | The pod's canon: `--push-canon`, `--take-canon`, `--status`. |
-| `eval_harness.py` | Runs `evals/cases.json`, your pod's own cases, against your agent. |
-| `bench.py --label <name>` | Measures a run: latency, tokens, cache, cost per contact. The before/after pair around your lever. |
-| `readout.py` | Writes the one page that says what your agent is and what it just did. The canon push publishes it. |
+| Script                      | What it does                                                                                                              |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `setup.py`                | Checks this machine.`--fix` builds the venv and installs. Run it until READY.                                           |
+| `run.py <PNR> --trace`    | Runs the agent on one ticket and shows every turn on the wire.`--all` runs the five shapes and writes the totals.       |
+| `verify.py <step>`        | A gate:`1.2`, `1.3`, `1.4`, `2.1`, `2.2`, `3.1`, `4.1`. Run it with no step and it prints the status board. |
+| `pod_sync.py`             | The pod's canon:`--push-canon`, `--take-canon`, `--status`.                                                         |
+| `eval_harness.py`         | Runs`evals/cases.json`, your pod's own cases, against your agent.                                                       |
+| `bench.py --label <name>` | Measures a run: latency, tokens, cache, cost per contact. The before/after pair around your lever.                        |
+| `readout.py`              | Writes the one page that says what your agent is and what it just did. The canon push publishes it.                       |
 
 `TEAM.md` is the pod's name and a typed roster, written once by whoever created
 the repo. The review reads the names off it. `PITCH.md` and `evals/cases.json`
@@ -101,5 +101,4 @@ leaves your laptop.
 
 ## Ground rule
 
-If you cannot explain a turn on your own trace (`python3 run.py <PNR>
---trace`), you have not finished the step, whatever the gate says.
+If you cannot explain a turn on your own trace (`python3 run.py <PNR> --trace`), you have not finished the step, whatever the gate says.
