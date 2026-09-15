@@ -1,0 +1,12 @@
+[project]
+name = "larkspur-agent"
+version = "0.1.0"
+description = "Larkspur Airlines disruption-care chat agent (Partner Basecamp build-along)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic>=0.69,<1.0",
+]
+
+[tool.uv]
+# Dependencies mirror requirements.txt, which setup.py installs into .venv.
