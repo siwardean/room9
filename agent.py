@@ -27,8 +27,49 @@ EXTRA_TOOLS: List[Dict[str, Any]] = [{
                 "properties": {"origin": {"type": "string"}, "dest": {"type": "string"}, "date": {"type": "string"}, "cabin": {"type": "string"}},
                 "required": ["origin", "dest", "date"],
             },
+        }, {
+            "name": "fare_rules",
+            "description": (
+                "Look up the published fare-family rules for a ticket: whether a "
+                "voluntary change is permitted and what it costs, whether the fare is "
+                "refundable, what a voluntary cancel retains, and whether a same-day "
+                "confirmed change is allowed. Use this for what the customer may do of "
+                "their own accord — change their mind or cancel voluntarily — which is "
+                "separate from what a disruption entitles them to; check_policy owns "
+                "those. Takes the fare_family from lookup_booking (e.g. basic, main, "
+                "main_plus, first) and returns that family's rules."
+            ),
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "fare_family": {
+                        "type": "string",
+                        "description": "Fare family as returned by lookup_booking, e.g. basic, main, main_plus, first.",
+                    },
+                },
+                "required": ["fare_family"],
+            },
         }]   # ✏️ Build 2, step 2.1: schemas for the tools you add
-LOCAL_TOOLS: Dict[str, Any] = {"next_available_day": next_available_day}
+
+
+def fare_rules(fare_family: str) -> Dict[str, Any]:
+    """The published rules for one fare family, straight from the fare table:
+    voluntary change, refundability, voluntary-cancel value, and same-day
+    confirmed change. These govern what the customer may do voluntarily, not
+    what a disruption owes them (check_policy). Accepts the underscored/lowercased
+    form lookup_booking hands back ("main_plus"), which the table keys as
+    "Main Plus"."""
+    from support.mock_backend import load_policy
+    rules = load_policy()["fare_family_rules"]
+    wanted = str(fare_family).strip().lower().replace("_", " ")
+    for name, row in rules.items():
+        if name.lower() == wanted:
+            return {"fare_family": name, **row}
+    return {"error": "Unknown fare family %r. Known: %s" % (fare_family, ", ".join(rules))}
+
+
+LOCAL_TOOLS: Dict[str, Any] = {"next_available_day": next_available_day,
+                               "fare_rules": fare_rules}
         # ✏️ Build 2, step 2.1: the functions behind them
 
 
