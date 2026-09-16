@@ -14,7 +14,7 @@ A smarter model increases tool-call accuracy but the bench score won't capture t
 
 ## Priya asked
 
-Costs:
-Wrong:
-Runs it:
-Left out:
+Costs:$0.0555
+Wrong: nothing
+Runs it: yes
+Left out: none
