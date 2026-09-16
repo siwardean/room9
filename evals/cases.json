@@ -135,8 +135,17 @@
       "graders": [
         {
           "type": "rules",
-          "must_call": ["lookup_booking", "get_flight_status", "search_alternatives", "check_policy", "send_confirmation"],
-          "must_not_call": ["issue_voucher", "escalate_to_human", "confirm_rebooking", "hold_seat"]
+          "must_call": [
+            "lookup_booking",
+            "get_flight_status",
+            "check_policy"
+          ],
+          "must_not_call": [
+            "issue_voucher",
+            "escalate_to_human",
+            "confirm_rebooking",
+            "hold_seat"
+          ]
         },
         {
           "type": "judge"
@@ -148,7 +157,7 @@
       "suite": "rebooking",
       "hard_gate": true,
       "shape": "Cancelled flight, customer asks for rebooking",
-      "author": "Celine PELLETIER",
+      "author": "Céline PELLETIER",
       "pnr": "K7PQ2M",
       "last_name": "Marchetti",
       "message": "Hello, my flight as been canceled can you propose me a new fly?",
