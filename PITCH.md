@@ -10,6 +10,8 @@ Next: more evals and more guardrail
 Still broken: nothing watches tone on abusive messages
 Lever: intelligence
 
+A smarter model increases tool-call accuracy but the bench score won't capture the added latency and cost per request that a real customer would feel
+
 ## Priya asked
 
 Costs:
